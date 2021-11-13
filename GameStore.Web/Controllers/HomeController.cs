@@ -11,7 +11,7 @@ namespace GameStore.Web.Controllers
     {
         private readonly IGameService _gameService;
 
-        public HomeController(IGameService gameService)
+        public HomeController(IGameService gameService, IOrderService orderService)
         {
             _gameService = gameService;
         }

@@ -11,6 +11,7 @@ namespace GameStore.Web.Controllers
     {
         private readonly IGameService _gameService;
         private readonly IGameGroupService _gameGroupService;
+        private readonly IOrderService _orderService;
 
         public GameGroupController(IGameService gameService, IGameGroupService gameGroupService)
         {
@@ -31,5 +32,7 @@ namespace GameStore.Web.Controllers
         //{
         //    return View("GameDetail", _gameService.GetGameDetail(id));
         //}
+
+        
     }
 }
