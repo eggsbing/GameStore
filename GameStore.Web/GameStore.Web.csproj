@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="X.PagedList" Version="8.1.0" />
+    <PackageReference Include="ZarinpalSandbox" Version="2.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +24,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

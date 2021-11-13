@@ -28,7 +28,7 @@
                             <h2 class="card-header h4">@item.Name</h2>
                             <div class="p-2">
                                 <p>Price : @item.Price$</p>
-                                <a class="btn btn-outline-secondary" asp-area="" asp-controller="Home" asp-action="GameDetails">Details</a>
+                                <a class="btn btn-outline-secondary" asp-area="" asp-controller="Home" asp-action="GameDetails" asp-route-id="@item.Id">Details</a>
                                 <a class="btn btn-outline-success" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                                         <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />

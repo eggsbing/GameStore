@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GameStore.Core.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,13 @@ namespace GameStore.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IGameService _gameService;
+
+        public HomeController(IGameService gameService)
+        {
+            _gameService = gameService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -28,9 +36,11 @@ namespace GameStore.Web.Controllers
         {
             return View();
         }
-        public IActionResult GameDetails()
+
+        [Route("detil/{id}")]
+        public IActionResult GameDetails(int id)
         {
-            return View();
+            return View(_gameService.GetGameDetail(id));
         }
     }
 }

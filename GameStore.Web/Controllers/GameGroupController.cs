@@ -27,9 +27,9 @@ namespace GameStore.Web.Controllers
                 ));
         }
 
-        public IActionResult LoadProductDetail(int id)
-        {
-            return PartialView("GameDetail", _gameService.GetGameDetail(id));
-        }
+        //public IActionResult LoadProductDetail(int id)
+        //{
+        //    return View("GameDetail", _gameService.GetGameDetail(id));
+        //}
     }
 }
