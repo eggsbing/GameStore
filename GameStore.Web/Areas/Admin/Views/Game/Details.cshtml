@@ -1,0 +1,77 @@
+﻿@model GameStore.Core.ViewModels.Games.GameCreateOrEditVm
+
+@{
+    ViewData["Title"] = $"{Model.Name} - Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Categories</h4>
+    <hr />
+    <div class="container">
+        <div class="">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Year)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Year)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Platform)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Platform)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CPU)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CPU)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.GPU)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.GPU)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.RAM)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.RAM)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FreeSpace)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FreeSpace)
+                </dd>
+                @*<dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.GroupTitle)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.GroupTitle)
+                </dd>*@
+            </dl>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-warning">Edit</a> |
+    <a asp-action="Index" class="btn btn-outline-info btn-sm">Back to List</a>
+</div>
+

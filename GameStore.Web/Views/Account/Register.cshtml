@@ -1,0 +1,72 @@
+﻿@model GameStore.Core.ViewModels.Users.AccountRegisterVm
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<br />
+<div class="container mt-5">
+    <div class="row">
+        <form asp-action="Register" asp-controller="Account" asp-area="" asp-antiforgery="true" method="post">
+            <img class="offset-md-5 rounded-circle" src="~/img/Other/signin.png" alt="" width="215" height="215" />
+            <h1 class="mb-3 h3 text-center">Please Sign In</h1>
+
+            <div class="form-floating offset-md-4 col-md-4 mb-2">
+                <input asp-for="FullName" class="form-control" placeholder="FullName">
+                <label for="floatingInput">FullName</label>
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-floating offset-md-4 col-md-4 mb-2">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Username">
+                    <label for="floatingInput">Username</label>
+                </div>
+
+                <div class="form-floating offset-md-4 col-md-4 mb-2">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="Age">
+                    <label for="floatingInput">Age</label>
+                </div>*@
+
+            <div class="form-floating offset-md-4 col-md-4 mb-2">
+                <input asp-for="Mobile" class="form-control" placeholder="Phone number">
+                <label for="floatingInput">Phone number</label>
+            </div>
+
+            <div class="form-floating offset-md-4 col-md-4 mb-2">
+                <input asp-for="Email" class="form-control" placeholder="Email Address">
+                <label for="floatingInput">Email address</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating offset-md-4 col-md-4 mb-2">
+                <input asp-for="Password" class="form-control" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating offset-md-4 col-md-4 mb-2">
+                <input asp-for="RePassword" class="form-control" placeholder="Confirm Password">
+                <label for="floatingPassword">Confirm Password</label>
+                <span asp-validation-for="RePassword" class="text-danger"></span>
+            </div>
+
+            <div class="offset-md-4 col-md-4">
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                <p class="mt-5 mb-5 text-muted text-center">&copy; Game Store 2021</p>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

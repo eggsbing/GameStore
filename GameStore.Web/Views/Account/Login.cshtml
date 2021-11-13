@@ -1,0 +1,37 @@
+﻿@model GameStore.Core.ViewModels.Users.AccountLoginVm
+@{
+    ViewData["Title"] = "Login";
+}
+
+<br />
+<div class="container mt-5">
+    <div class="row">
+        <form asp-action="Login" asp-controller="Account" asp-area="" method="post" asp-antiforgery="true">
+            <img class="offset-md-5 rounded-circle" src="~/img/Other/signin.png" alt="" width="215" height="215" />
+            <h1 class="mb-3 h3 text-center">Please Login</h1>
+
+            <div class="form-floating offset-md-4 col-md-4 mb-2">
+                <input asp-for="Email" class="form-control" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+
+            <div class="form-floating offset-md-4 col-md-4 mb-2">
+                <input asp-for="Password" class="form-control" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="offset-md-4 col-md-4">
+                <div class="checkbox mb-3">
+                    <label>
+                        <input asp-for="IsRemember"> Remember me
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                <p class="mt-4">You dont have a account ? <a asp-area="" asp-controller="Home" asp-action="SignIn">Create one</a></p>
+                <p class="mt-5 mb-5 text-muted text-center">&copy; Game Store 2021</p>
+            </div>
+
+        </form>
+    </div>
+</div>
+

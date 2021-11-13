@@ -1,0 +1,140 @@
+﻿@model GameStore.Core.ViewModels.Games.GameCreateOrEditVm
+@{
+    ViewData["Title"] = (Model.Id == 0 ? "Create" : $"Edit {Model.Name}");
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <div class="row">
+        <form asp-action="@(Model.Id == 0 ? "Create" : "Edit")" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="offset-md-1 col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="Name" class="form-control" placeholder="Game Name">
+                    <label for="floatingPassword">Game Name</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="Price" class="form-control" placeholder="Price">
+                    <label for="floatingPassword">Price</label>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="offset-md-1 col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="Discount" class="form-control" placeholder="Discount">
+                    <label for="floatingPassword">Discount</label>
+                    <span asp-validation-for="Discount" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="Year" class="form-control" placeholder="Year">
+                    <label for="floatingPassword">Year</label>
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+
+                @*<div class="col-md-4 form-floating">
+                        <input asp-for="Platform" class="form-control" placeholder="Platform">
+                        <label for="floatingPassword">Platform</label>
+                        <span asp-validation-for="Platform" class="text-danger"></span>
+                    </div>*@
+
+                <div class="offset-md-1 col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="CPU" class="form-control" placeholder="CPU">
+                    <label for="floatingPassword">CPU</label>
+                </div>
+
+                <div class="col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="GPU" class="form-control" placeholder="GPU">
+                    <label for="floatingPassword">GPU</label>
+                </div>
+
+                <div class="offset-md-1 col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="RAM" class="form-control" placeholder="RAM">
+                    <label for="floatingPassword">RAM</label>
+                </div>
+
+                <div class="col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="FreeSpace" class="form-control" placeholder="Free Space">
+                    <label for="floatingPassword">Free Space</label>
+                </div>
+
+                <div class="offset-md-1 col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="Description" class="form-control" placeholder="Description">
+                    <label for="floatingPassword">Description</label>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-5 form-floating mb-2 p-1">
+                    <select asp-for="GameGroupId" asp-items="ViewBag.Groups" class="form-control" placeholder="Categories"></select>
+                    <label for="floatingPassword">Categories</label>
+                    <span asp-validation-for="GameGroupId" class="text-danger"></span>
+                </div>
+
+                <div class="offset-md-1 col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="ImageFile" class="form-control" placeholder="">
+                    <label for="floatingPassword">Image</label>
+                    <img id="imgPreview" src="@Model.ImageFullName" class="text-danger" width="100" />
+                </div>
+
+
+                @if (Model.Id != 0)
+                {
+                    <input asp-for="CreateDate" type="hidden" />
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-floating text-center">
+                        <input type="submit" value="Edit" class="btn btn-outline-warning mt-3 col-md-2" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-floating text-center">
+                        <input type="submit" value="Add" class="btn btn-primary mt-3 col-md-2" />
+                    </div>
+                }
+
+                <div class="mt-2 text-center">
+                    <a class="btn btn-outline-info btn-sm" asp-action="Index">Back to list</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .catch(error => {
+                console.error(error);
+            });
+
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgPreview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                alert('select a file to see preview');
+                $('#imgPreview').attr('src', '');
+            }
+        }
+
+        $("#ImageFile").change(function () {
+            readURL(this);
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

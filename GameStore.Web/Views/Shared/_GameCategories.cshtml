@@ -1,0 +1,10 @@
+﻿@inject GameStore.Core.Services.IGameGroupService GameGroupService
+<header class="d-flex justify-content-center py-3 bg-light sticky-top">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a asp-controller="Home" asp-action="Product" class="nav-link active" aria-current="page">All</a></li>
+        @foreach (var item in await GameGroupService.GetAllAsync())
+        {
+            <li class="nav-item"><a asp-controller="GameGroup" asp-action="Index" asp-route-id="@item.Id" asp-route-title="@item.Title" class="nav-link">@item.Title</a></li>
+        }
+    </ul>
+</header>
