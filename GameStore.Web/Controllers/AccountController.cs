@@ -40,7 +40,7 @@ namespace GameStore.Controllers
             if (ModelState.IsValid)
             {
                 await _accountService.RegisterAsync(vm);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             }
             return View(vm);
         }
