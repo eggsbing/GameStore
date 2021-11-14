@@ -16,16 +16,16 @@ namespace GameStore.Web.Controllers
             _orderService = orderService;
         }
 
+        [Route("CartDe")]
         public IActionResult Cart()
         {
-            return View();
+            return View(_orderService.GetCurrentUserCart());
         }
 
-        [Route("cart/{id}")]
         public IActionResult AddToCart(int id)
         {
             _orderService.AddGameToCart(id);
-            return View("Cart");
+            return RedirectToAction("Cart");
         }
     }
 }
