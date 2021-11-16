@@ -15,7 +15,7 @@
         <table class="table table-bordered shadow">
             <thead>
                 <tr>
-                    <th>
+                    <th class="text-center">
                         @Html.DisplayNameFor(model => model.ImageName)
                     </th>
                     <th>
@@ -40,24 +40,24 @@
                 {
                     <tr>
                         <td class="text-center">
-                            <img src="@item.ImageFullName" class="text-center" height="50"/>
+                            <img src="@item.ImageFullName" height="50"/>
                         </td>
-                        <td class="text-center">
+                        <td class="align-middle">
                             @item.Name
                         </td>
-                        <td class="text-center">
+                        <td class="align-middle">
                             @item.Price
                         </td>
-                        <td class="text-center">
+                        <td class="align-middle">
                             @item.Discount
                         </td>
-                        <td class="text-center">
+                        <td class="align-middle">
                             @item.GroupTitle
                         </td>
-                        <td>
+                        <td class="align-middle">
                             @item.CreateDate.ToString("dddd dd MMMM yyyy - HH:mm")
                         </td>
-                        <td class="text-center">
+                        <td class="align-middle">
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning">Edit</a>
                             <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Details</a>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>

@@ -1,9 +1,6 @@
 ﻿using GameStore.Domain.Entities.Games;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameStore.Core.ViewModels.ProductGroups
 {
@@ -16,7 +13,7 @@ namespace GameStore.Core.ViewModels.ProductGroups
                 Title = group.Title,
                 CreateDate = group.CreateDate,
                 Id = group.Id,
-                LastModifyDate = group.LastModifyDate,
+                LastModifyDate = group.LastModifyDate,                
             };
         }
 
