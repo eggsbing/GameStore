@@ -13,6 +13,7 @@ namespace GameStore.Core.ViewModels.ProductGroups
         {
             return new GameGroupCreateOrEditVm
             {
+                Title = group.Title,
                 CreateDate = group.CreateDate,
                 Id = group.Id,
                 LastModifyDate = group.LastModifyDate,

@@ -1,4 +1,5 @@
-﻿using GameStore.Core.Utilities.Extensions;
+﻿using GameStore.Core.Senders.Mail;
+using GameStore.Core.Utilities.Extensions;
 using GameStore.Core.Utilities.Security;
 using GameStore.Core.ViewModels.Users;
 using GameStore.Data.Context;
@@ -24,11 +25,13 @@ namespace GameStore.Core.Services
     {
         private readonly GameStoreContext _context;
         private readonly ISecurityService _securityService;
+        private readonly IMailSender _mailSender;
 
-        public AccountService(GameStoreContext context, ISecurityService securityService)
+        public AccountService(GameStoreContext context, ISecurityService securityService, IMailSender mailSender)
         {
             _context = context;
             _securityService = securityService;
+            _mailSender = mailSender;
         }
 
         public async Task<bool> CheckEmailAndPasswordAsync(AccountLoginVm vm)
@@ -83,6 +86,7 @@ namespace GameStore.Core.Services
                     IsActive = true,
                 });
                 await _context.SaveChangesAsync();
+                _mailSender.Send(vm.Email, "Game Store Activate Code", $"<a href='http://eggsbing.ir/home/active/{emailCode}'>Active Link</a>");
                 return true;
             }
             catch (Exception ex)

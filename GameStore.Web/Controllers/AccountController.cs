@@ -92,5 +92,10 @@ namespace GameStore.Controllers
         {
             return View();
         }
+
+        public IActionResult VerifyCode()
+        {
+            return View();
+        }
     }
 }

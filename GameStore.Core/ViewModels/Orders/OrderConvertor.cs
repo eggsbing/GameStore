@@ -32,7 +32,7 @@ namespace GameStore.Core.ViewModels.Orders
                 Count = d.Count,
                 Price = d.Price,
                 ProductId = d.GameId,
-                Product = d.Game.ToGameDetailViewModel()
+                Product = d.Game?.ToGameDetailViewModel()
             };
         }
     }

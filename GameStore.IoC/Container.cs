@@ -1,4 +1,5 @@
-﻿using GameStore.Core.Services;
+﻿using GameStore.Core.Senders.Mail;
+using GameStore.Core.Services;
 using GameStore.Core.Utilities.Security;
 using GameStore.Data.Context;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,7 @@ namespace GameStore.IoC
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IPermissionService, PermissionService>();
             services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IMailSender, SendEmail>();
 
             return services;
         }
