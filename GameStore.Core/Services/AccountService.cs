@@ -86,7 +86,7 @@ namespace GameStore.Core.Services
                     IsActive = true,
                 });
                 await _context.SaveChangesAsync();
-                _mailSender.Send(vm.Email, "Game Store Activate Code", $"<a href='http://eggsbing.ir/home/active/{emailCode}'>Active Link</a>");
+                _mailSender.Send(vm.Email, "Game Store Activate Code", $"<a href='https://localhost:44387/home/active/{emailCode}'>Active Link</a>");
                 return true;
             }
             catch (Exception ex)
