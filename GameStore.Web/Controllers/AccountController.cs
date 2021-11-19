@@ -15,10 +15,12 @@ namespace GameStore.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountService _accountService;
+        private readonly IEmailCodeService _emailCodeService;
 
-        public AccountController(IAccountService accountService)
+        public AccountController(IAccountService accountService, IEmailCodeService emailCodeService)
         {
             _accountService = accountService;
+            _emailCodeService = emailCodeService;
         }
 
         [Route("register")]
@@ -93,6 +95,7 @@ namespace GameStore.Controllers
             return View();
         }
 
+        [Route("Verify")]
         public IActionResult VerifyCode()
         {
             return View();

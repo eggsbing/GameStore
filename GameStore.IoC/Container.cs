@@ -29,6 +29,7 @@ namespace GameStore.IoC
             services.AddTransient<IPermissionService, PermissionService>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IMailSender, SendEmail>();
+            services.AddTransient<IEmailCodeService, EmailCodeService>();
 
             return services;
         }
