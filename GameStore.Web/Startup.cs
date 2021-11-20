@@ -62,6 +62,10 @@ namespace GameStore.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
             app.UseRouting();
             app.UseStaticFiles();
