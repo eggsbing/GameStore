@@ -26,12 +26,14 @@ namespace GameStore.Core.Services
         private readonly GameStoreContext _context;
         private readonly ISecurityService _securityService;
         private readonly IMailSender _mailSender;
+        private readonly IEmailCodeService _emailCodeService;
 
-        public AccountService(GameStoreContext context, ISecurityService securityService, IMailSender mailSender)
+        public AccountService(GameStoreContext context, ISecurityService securityService, IMailSender mailSender, IEmailCodeService emailCodeService)
         {
             _context = context;
             _securityService = securityService;
             _mailSender = mailSender;
+            _emailCodeService = emailCodeService;
         }
 
         public async Task<bool> CheckEmailAndPasswordAsync(AccountLoginVm vm)

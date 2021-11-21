@@ -95,10 +95,10 @@ namespace GameStore.Controllers
             return View();
         }
 
-        [Route("Verify")]
-        public IActionResult VerifyCode()
+        [Route("Verify/{id}")]
+        public IActionResult VerifyCode(Guid id)
         {
-            return View();
+            return View(_emailCodeService.EmailCode(id));
         }
     }
 }

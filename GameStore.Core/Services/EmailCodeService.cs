@@ -23,7 +23,14 @@ namespace GameStore.Core.Services
 
         public async Task<bool> EmailCode(Guid id)
         {
-            return await _context.Users.AnyAsync(c => c.EmailCode == id);
+            if (await _context.Users.AnyAsync(c => c.EmailCode == id))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

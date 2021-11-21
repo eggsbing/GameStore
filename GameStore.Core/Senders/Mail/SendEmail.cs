@@ -14,10 +14,10 @@ namespace GameStore.Core.Senders.Mail
             var defaultEmail = new
             {
                 SMTP = "",
-                From = "info@domain.com",
+                From = "",
                 DisplayName = "Game Store",
                 Port = 25,
-                UserName = "info@domain.com",
+                UserName = "",
                 Password = "",
                 EnableSSL = false
             };
