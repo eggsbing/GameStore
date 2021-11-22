@@ -15,8 +15,8 @@ namespace GameStore.Core.Services
     {
         OrderVm GetCurrentUserCart();
         void AddGameToCart(int gameId);
-        OrderVm Find(long id);
-        void VerifyOrder(long id, string refId);
+        OrderVm Find(int id);
+        void VerifyOrder(int id, string refId);
     }
 
     public class OrderService : IOrderService
@@ -67,7 +67,7 @@ namespace GameStore.Core.Services
             _context.SaveChanges();
         }
 
-        public OrderVm Find(long id)
+        public OrderVm Find(int id)
         {
             var order = _context.Orders
                 .AsNoTracking()
@@ -90,7 +90,7 @@ namespace GameStore.Core.Services
             return cart.ToViewModel();
         }
 
-        public void VerifyOrder(long id, string refId)
+        public void VerifyOrder(int id, string refId)
         {
             var order = _context.Orders.Find(id);
             order.IsFinalized = true;

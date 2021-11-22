@@ -46,27 +46,5 @@ namespace GameStore.Web.Controllers
             return View(_gameService.GetGameDetail(id));
         }
 
-        public IActionResult BackFormBank(int id)
-        {
-            if (HttpContext.Request.Query["Status"] != "" &&
-                HttpContext.Request.Query["Status"].ToString().ToLower() == "ok" &&
-                HttpContext.Request.Query["Authority"] != "")
-            {
-                string authority = HttpContext.Request.Query["Authority"].ToString();
-
-                var order = _orderService.Find(id);
-                var payment = new Payment(order.FinalPrice);
-                var res = payment.Verification(authority).Result;
-                if (res.Status == 100)
-                {
-                    _orderService.VerifyOrder(id, res.RefId.ToString());
-                    ViewBag.Code = res.RefId;
-                    return View();
-                }
-
-            }
-
-            return NotFound();
-        }
     }
 }

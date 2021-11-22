@@ -8,7 +8,7 @@ namespace GameStore.Core.ViewModels.Orders
 {
     public class OrderVm
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public int UserId { get; set; }
         public DateTime RegisterDate { get; set; }
         public DateTime? PaidDate { get; set; }
