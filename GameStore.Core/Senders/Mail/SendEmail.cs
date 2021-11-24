@@ -14,7 +14,7 @@ namespace GameStore.Core.Senders.Mail
             var defaultEmail = new
             {
                 SMTP = "eggsbing.ir",
-                From = "",
+                From = "gamestore@eggsbing.ir",
                 DisplayName = "Game Store",
                 Port = 25,
                 UserName = "",
