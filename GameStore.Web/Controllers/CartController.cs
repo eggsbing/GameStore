@@ -16,7 +16,7 @@ namespace GameStore.Web.Controllers
             _orderService = orderService;
         }
 
-        [Route("CartDe")]
+        
         public IActionResult Cart()
         {
             return View(_orderService.GetCurrentUserCart());
@@ -25,6 +25,24 @@ namespace GameStore.Web.Controllers
         public IActionResult AddToCart(int id)
         {
             _orderService.AddGameToCart(id);
+            return RedirectToAction("Cart");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _orderService.Delete(id);
+            return RedirectToAction("Cart");
+        }
+
+        public IActionResult Plus(int id)
+        {
+            _orderService.Plus(id);
+            return RedirectToAction("Cart");
+        }
+
+        public IActionResult Minus(int id)
+        {
+            _orderService.Minus(id);
             return RedirectToAction("Cart");
         }
     }

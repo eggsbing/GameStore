@@ -32,17 +32,35 @@
                         <div class="card-body">
                             <h5 class="card-title d-flex justify-content-between align-items-center">
                                 <span>@item.Product.Name</span>
-                                <span class="badge bg-primary rounded-circle">@item.Count</span>
+                                <span>
+                                    <span>
+                                        <a class="btn text-danger" asp-controller="Cart" asp-action="Minus" asp-route-id="@item.Id">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-patch-minus" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
+                                                <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911l-1.318.016z" />
+                                            </svg>
+                                        </a>
+                                    </span>
+                                    <span class="badge bg-primary rounded-circle">@item.Count</span>
+                                    <span>
+                                        <a class="btn text-success" asp-controller="Cart" asp-action="Plus" asp-route-id="@item.Id">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-patch-plus" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z" />
+                                                <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911l-1.318.016z" />
+                                            </svg>
+                                        </a>
+                                    </span>
+                                </span>
                             </h5>
 
                             <p class="card-text"><small class="text-muted">@item.Price</small></p>
-                            <button type="button" class="btn btn-outline-danger">
+                            <a class="btn btn-outline-danger" asp-controller="Cart" asp-action="Delete" asp-route-id="@item.Id">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-x" viewBox="0 0 16 16">
                                     <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z" />
                                     <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                                 </svg>
                                 Remove
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -55,13 +73,13 @@
     <div class="card d-flex shadow offset-md-2 col-md-8 mb-3">
         <div class="row p-2">
             @*<div class="col-md-2">
-                <p class="h4 text-secondary">
-                    Total Price:<br />
-                    
+                    <p class="h4 text-secondary">
+                        Total Price:<br />
 
-                    @Model.TotalPrice.ToString("C")
-                </p>
-            </div>*@
+
+                        @Model.TotalPrice.ToString("C")
+                    </p>
+                </div>*@
             <div class="">
                 <p class="h4 text-secondary">
                     <span class="justify-content-start">Final Price:</span>
@@ -82,7 +100,7 @@
     <div class="container">
         <a class="w-100 btn btn-primary btn-lg" asp-controller="Payment" asp-action="Pay">Continue to checkout</a>
     </div>
-    
+
 }
 else
 {

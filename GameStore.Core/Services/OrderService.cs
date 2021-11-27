@@ -17,6 +17,9 @@ namespace GameStore.Core.Services
         void AddGameToCart(int gameId);
         OrderVm Find(int id);
         void VerifyOrder(int id, string refId);
+        void Delete(int id);
+        void Plus(int id);
+        void Minus(int id);
     }
 
     public class OrderService : IOrderService
@@ -47,7 +50,7 @@ namespace GameStore.Core.Services
                 _context.SaveChanges();
             }
             var game = _context.Games.AsNoTracking().Single(c => c.Id == gameId);
-            var orderDetail = _context.OrderDetails.SingleOrDefault(c => c.GameId == gameId);
+            var orderDetail = _context.OrderDetails.SingleOrDefault(c => c.OrderId == cart.Id && c.GameId == gameId);
             if (orderDetail == null)
             {
                 _context.OrderDetails.Add(new OrderDetails
@@ -64,6 +67,13 @@ namespace GameStore.Core.Services
                 orderDetail.Count++;
                 _context.OrderDetails.Update(orderDetail);
             }
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var orderDetail = _context.OrderDetails.Find(id);
+            _context.Remove(orderDetail);
             _context.SaveChanges();
         }
 
@@ -88,6 +98,26 @@ namespace GameStore.Core.Services
             if (cart == null) return null;
 
             return cart.ToViewModel();
+        }
+
+        public void Minus(int id)
+        {
+            var orderDetail = _context.OrderDetails.Find(id);
+            orderDetail.Count -= 1;
+            if (orderDetail.Count == 0)
+            {
+                _context.OrderDetails.Remove(orderDetail);
+            }
+            else
+            {
+                _context.Update(orderDetail);
+            }
+        }
+
+        public void Plus(int id)
+        {
+            var orderDetail = _context.OrderDetails.Find(id);
+            orderDetail.Count += 1;
         }
 
         public void VerifyOrder(int id, string refId)

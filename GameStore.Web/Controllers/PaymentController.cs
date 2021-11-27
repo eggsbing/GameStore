@@ -48,7 +48,7 @@ namespace GameStore.Web.Controllers
             }
             else
             {
-                return BadRequest();
+                return NotFound();
             }
         }
     }
