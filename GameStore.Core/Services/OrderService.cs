@@ -112,12 +112,14 @@ namespace GameStore.Core.Services
             {
                 _context.Update(orderDetail);
             }
+            _context.SaveChanges();
         }
 
         public void Plus(int id)
         {
             var orderDetail = _context.OrderDetails.Find(id);
             orderDetail.Count += 1;
+            _context.SaveChanges();
         }
 
         public void VerifyOrder(int id, string refId)
