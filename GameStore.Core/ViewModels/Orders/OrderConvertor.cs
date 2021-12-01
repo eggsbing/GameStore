@@ -29,11 +29,69 @@ namespace GameStore.Core.ViewModels.Orders
             {
                 Id = d.Id,
                 OrderId = d.OrderId,
+                GameName = d.Game.Name,
                 Count = d.Count,
                 Price = d.Price,
                 ProductId = d.GameId,
                 Product = d.Game?.ToGameDetailViewModel()
             };
+        }
+
+
+
+
+
+        public static AdminOrderVm ToOrderViewModel(this Order o)
+        {
+            return new AdminOrderVm
+            {
+                Id = o.Id,
+                UserId = o.UserId,
+                UserName = o.User.FullName,
+                PaidDate = o.PaidDate,
+                RegisterDate = o.RegisterDate,
+                IsFinalized = o.IsFinalized,
+                RefId = o.RefId,
+            };
+        }
+
+        public static IEnumerable<AdminOrderVm> ToOrderViewModel(this IEnumerable<Order> order)
+        {
+            return order.Select(c => c.ToOrderViewModel());
+        }
+
+        public static IQueryable<AdminOrderVm> ToOrderViewModel(this IQueryable<Order> order)
+        {
+            return order.Select(c => c.ToOrderViewModel());
+        }
+
+
+
+
+
+
+
+        public static AdminOrderDetailVm ToDetailViewModel(this OrderDetails c)
+        {
+            return new AdminOrderDetailVm
+            {
+                Id = c.Id,
+                OrderId = c.OrderId,
+                ProductId = c.GameId,
+                Name = c.Game.Name,
+                Count = c.Count,
+                Price = c.Price
+            };
+        }
+
+        public static IEnumerable<AdminOrderDetailVm> ToDetailViewModel(this IEnumerable<OrderDetails> order)
+        {
+            return order.Select(c => c.ToDetailViewModel());
+        }
+
+        public static IQueryable<AdminOrderDetailVm> ToDetailViewModel(this IQueryable<OrderDetails> order)
+        {
+            return order.Select(c => c.ToDetailViewModel());
         }
     }
 }

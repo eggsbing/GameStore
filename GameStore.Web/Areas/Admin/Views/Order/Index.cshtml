@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GameStore.Core.ViewModels.Orders.AdminOrderVm>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Orders</h1>
+
+
+<div class="container-fluid">
+
+
+    <div class="row">
+        <table class="table table-bordered shadow">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PaidDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RefId)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @item.UserName
+                        </td>
+                        <td class="align-middle">
+                            @item.PaidDate?.ToString("dddd dd MMMM yyyy - HH:mm")
+                        </td>
+                        <td class="align-middle">
+                            @item.RefId
+                        </td>
+                        <td class="align-middle">
+                            <a asp-action="OrderDetail" asp-route-id="@item.Id" class="btn btn-outline-primary">Details</a>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

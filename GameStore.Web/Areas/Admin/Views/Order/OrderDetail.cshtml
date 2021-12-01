@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GameStore.Core.ViewModels.Orders.AdminOrderDetailVm>
+@{
+    ViewData["Title"] = "OrderDetail";
+}
+
+<h1>Order Detail</h1>
+
+
+<div class="container-fluid">
+
+
+
+    <div class="row">
+        <table class="table table-bordered shadow">
+
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Count)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @item.Name
+                        </td>
+                        <td class="align-middle">
+                            @item.Price
+                        </td>
+                        <td class="align-middle">
+                            @item.Count
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

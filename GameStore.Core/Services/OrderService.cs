@@ -20,6 +20,8 @@ namespace GameStore.Core.Services
         void Delete(int id);
         void Plus(int id);
         void Minus(int id);
+        Task<List<AdminOrderVm>> GetAllAsync();
+        Task<List<AdminOrderDetailVm>> GetOrderDetail(int orderId);
     }
 
     public class OrderService : IOrderService
@@ -131,6 +133,27 @@ namespace GameStore.Core.Services
 
             _context.Orders.Update(order);
             _context.SaveChanges();
+        }
+
+        public async Task<List<AdminOrderVm>> GetAllAsync()
+        {
+            return await _context.Orders
+                .OrderByDescending(c => c.Id)
+                .Include(c => c.User)
+                .Where(c => c.IsFinalized == true)
+                .ToOrderViewModel()
+                .ToListAsync();
+        }
+
+        public async Task<List<AdminOrderDetailVm>> GetOrderDetail(int orderId)
+        {
+            return await _context.OrderDetails
+                .Where(c => c.OrderId == orderId)
+                .Include(c => c.Order)
+                .Include(c => c.Game)
+                .ToDetailViewModel()
+                .ToListAsync();
+            
         }
     }
 }
