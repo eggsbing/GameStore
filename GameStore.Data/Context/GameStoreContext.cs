@@ -1,4 +1,5 @@
 ﻿using GameStore.Domain.Entities.Games;
+using GameStore.Domain.Entities.Notes;
 using GameStore.Domain.Entities.Orders;
 using GameStore.Domain.Entities.Permission;
 using GameStore.Domain.Entities.Users;
@@ -27,6 +28,7 @@ namespace GameStore.Data.Context
         public DbSet<GameComment> GameComments { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Note> Notes { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
