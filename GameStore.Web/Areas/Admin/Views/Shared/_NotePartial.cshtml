@@ -1,0 +1,18 @@
+﻿@inject GameStore.Core.Services.INoteService NoteService
+
+
+<ul class="nav flex-column mb-2">
+    <li class="nav-item">
+
+        @foreach (var item in await NoteService.GetAllAsync())
+        {
+            <a class="nav-link" asp-controller="Note" asp-action="Index" asp-route-id="@item.Id">
+                <span data-feather="file-text"></span>
+                @item.Name
+            </a>
+        }
+
+
+
+    </li>
+</ul>

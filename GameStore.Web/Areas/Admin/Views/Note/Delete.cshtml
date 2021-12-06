@@ -1,0 +1,32 @@
+﻿@model GameStore.Core.ViewModels.Notes.NoteCreateOrEditVm
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Note</h4>
+    <hr />
+    <dl class="row">
+        <dt>
+            @Html.DisplayFor(Model => Model.Name)
+        </dt>
+        <dt>
+            @Html.DisplayFor(Model => Model.Text)
+        </dt>
+        <dt>
+            @Html.DisplayFor(Model => Model.CreateDate)
+        </dt>
+        <dt>
+            @Html.DisplayFor(Model => Model.LastModifyDate)
+        </dt>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-outline-danger" />
+        <a asp-action="Index" asp-controller="Home" class="btn btn-outline-info btn-sm">Back to Dashboard</a>
+    </form>
+</div>

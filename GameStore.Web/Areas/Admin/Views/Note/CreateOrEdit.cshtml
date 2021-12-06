@@ -1,0 +1,61 @@
+﻿@model GameStore.Core.ViewModels.Notes.NoteCreateOrEditVm
+@{
+    ViewData["Title"] = (Model.Id == 0 ? "Create" : $"Edit {Model.Name}");
+}
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <form asp-action="@(Model.Id == 0 ? "Create" : "Edit")" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="offset-md-4 col-md-4 form-floating mb-2 p-1">
+                    <input asp-for="Name" class="form-control" placeholder="Title">
+                    <label for="floatingPassword">Title</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-12 form-floating mb-2 p-1">
+                    <textarea asp-for="Text" class="form-control" placeholder="Text" id="ckEditor"></textarea>
+                    <span asp-validation-for="Text" class="text-danger"></span>
+
+                    @*<textarea id="ckEditor" name="ckEditor" class="form-control"></textarea>*@
+
+                </div>
+
+
+
+                @if (Model.Id != 0)
+                {
+                    <input asp-for="CreateDate" type="hidden" />
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-floating text-center">
+                        <input type="submit" value="Edit" class="btn btn-outline-warning mt-3 col-md-2" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-floating text-center">
+                        <input type="submit" value="Add" class="btn btn-primary mt-3 col-md-2" />
+                    </div>
+                }
+
+                <div class="mt-2 text-center">
+                    <a class="btn btn-outline-info btn-sm" asp-action="Index" asp-controller="Home">Back to Dashboard</a>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('ckEditor')
+    </script>
+}
