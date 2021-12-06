@@ -17,8 +17,8 @@ namespace GameStore.Core.Senders.Mail
                 From = "gamestore@eggsbing.ir",
                 DisplayName = "Game Store",
                 Port = 25,
-                UserName = "",
-                Password = "",
+                UserName = "gamestore@eggsbing.ir",
+                Password = "@ehsnfllh_2002",
                 EnableSSL = false
             };
 
