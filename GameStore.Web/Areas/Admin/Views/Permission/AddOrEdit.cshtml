@@ -1,0 +1,33 @@
+﻿@model GameStore.Core.ViewModels.Permissions.RolePermissionAddOrEditVm
+@{
+    ViewData["Title"] = (Model.Id == 0 ? "Add" : $"Edit {Model.Name}");
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <form asp-action="@(Model.Id == 0 ? "Add" : "Edit")" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="offset-md-1 col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="Name" class="form-control" placeholder="Role Name">
+                    <label for="floatingPassword">Role Name</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="PermissionNames" class="form-control" placeholder="Permission Name">
+                    <label for="floatingPassword">Permission Name</label>
+                    <span asp-validation-for="PermissionNames" class="text-danger"></span>
+                </div>
+
+                @*<div class="offset-md-1 col-md-5 form-floating mb-2 p-1">
+                    <input asp-for="Name" class="form-control" placeholder="Role Name">
+                    <label for="floatingPassword">Game Name</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>*@
+            </div>
+        </form>
+    </div>
+</div>
