@@ -1,5 +1,5 @@
 ﻿@inject GameStore.Core.Services.IGameGroupService GameGroupService
-<header class="d-flex justify-content-center py-3 bg-light sticky-top">
+<header class="d-flex justify-content-center py-3 bg-light">
     <ul class="nav nav-pills">
         <li class="nav-item"><a asp-controller="Home" asp-action="Product" class="nav-link active" aria-current="page">All</a></li>
         @foreach (var item in await GameGroupService.GetAllAsync())
