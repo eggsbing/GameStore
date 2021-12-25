@@ -22,6 +22,7 @@ namespace GameStore.Domain.Entities.Games
         public string Description { get; set; }
         public int Year { get; set; }
         public string Platform { get; set; }
+        public int NumberOfPurchase { get; set; }
 
         // Requirment
         [MaxLength(50)]
