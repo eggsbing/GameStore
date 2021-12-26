@@ -18,6 +18,7 @@ namespace GameStore.Core.Services
     {
         IPagedList<GameDetailVm> GetGamesByGroupId(int groupId, int page = 1);
         GameDetailVm GetGameDetail(int gameId);
+        Task<List<GameIndexVm>> GetTopGamesAsync();
     }
     public class GameService : IGameService
     {
@@ -158,6 +159,13 @@ namespace GameStore.Core.Services
                 .Where(c => c.GameGroupId == groupId)
                 .Select(c => c.ToGameDetailViewModel())
                 .ToPagedList(page, Values.PageSize);
+        }
+
+        public Task<List<GameIndexVm>> GetTopGamesAsync()
+        {
+            return _context.Games
+                .OrderBy(c => c.NumberOfPurchase)
+                .ToGameIndexVm().ToListAsync();
         }
     }
 }
