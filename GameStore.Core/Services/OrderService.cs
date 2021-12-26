@@ -69,6 +69,9 @@ namespace GameStore.Core.Services
                 orderDetail.Count++;
                 _context.OrderDetails.Update(orderDetail);
             }
+
+            IncreaseNumberOfPurchase(gameId);
+
             _context.SaveChanges();
         }
 
@@ -123,6 +126,20 @@ namespace GameStore.Core.Services
             orderDetail.Count += 1;
             _context.SaveChanges();
         }
+
+        public void IncreaseNumberOfPurchase(int id)
+        {
+            var game = _context.Games.Find(id);
+            game.NumberOfPurchase += 1;
+            _context.SaveChanges();
+        }
+
+        public void DecreaseNumberOfPurchase(int id)
+        {
+            var game = _context.Games.Find(id);
+            game.NumberOfPurchase -= 1;
+            _context.SaveChanges();
+        }  // TODO
 
         public void VerifyOrder(int id, string refId)
         {

@@ -23,6 +23,7 @@ namespace GameStore.Core.ViewModels.Games
         public DateTime CreateDate { get; set; }
         [Display(Name ="Last Edit date")]
         public DateTime? LastModifyDate { get; set; }
+        public int NumberOfPurchase { get; set; }
 
         #region GameGroup
         public int GameGroupId { get; set; }
