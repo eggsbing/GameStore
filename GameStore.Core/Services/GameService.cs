@@ -164,7 +164,7 @@ namespace GameStore.Core.Services
         public Task<List<GameIndexVm>> GetTopGamesAsync()
         {
             return _context.Games
-                .OrderBy(c => c.NumberOfPurchase)
+                .OrderByDescending(c => c.NumberOfPurchase)
                 .ToGameIndexVm().ToListAsync();
         }
     }
