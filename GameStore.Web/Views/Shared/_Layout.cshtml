@@ -26,7 +26,7 @@
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link px-2 text-white hover">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Product" class="nav-link px-2 text-white hover">Products</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Product" class="nav-link px-2 text-white hover">Games</a></li>
                     <li><a asp-area="" asp-controller="Cart" asp-action="Cart" class="nav-link px-2 text-white hover">Cart</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link px-2 text-white hover">Contact us</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About" class="nav-link px-2 text-white hover">About</a></li>
@@ -45,7 +45,7 @@
                 <div class="text-end">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <a asp-area="" asp-controller="Home" asp-action="Product" class="btn btn-warning me-2">Account</a>
+                        @*<partial name="_AccountDetail" />*@
                         <a asp-area="" asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger">Logout</a>
                     }
                     else

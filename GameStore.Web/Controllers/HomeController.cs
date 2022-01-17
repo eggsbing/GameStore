@@ -12,11 +12,13 @@ namespace GameStore.Web.Controllers
     {
         private readonly IGameService _gameService;
         private readonly IOrderService _orderService;
+        private readonly IAccountService _accountService;
 
-        public HomeController(IGameService gameService, IOrderService orderService)
+        public HomeController(IGameService gameService, IOrderService orderService, IAccountService accountService)
         {
             _gameService = gameService;
             _orderService = orderService;
+            _accountService = accountService;
         }
 
         public IActionResult Index()
@@ -38,6 +40,12 @@ namespace GameStore.Web.Controllers
         public IActionResult About()
         {
             return View();
+        }
+
+        [Route("Account")]
+        public IActionResult AccountDetails(int id)
+        {
+            return View(_accountService.GetUserByIdAsync(id));
         }
 
         [Route("detil/{id}")]
