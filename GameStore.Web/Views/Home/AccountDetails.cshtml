@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GameStore.Core.ViewModels.Users.UserDetailVm>
+﻿@model GameStore.Core.ViewModels.Users.UserDetailVm
 @{
     ViewData["Title"] = "My Account";
 }
@@ -6,55 +6,20 @@
 
 
 <div class="container-fluid">
-
-
-
     <div class="row">
-        <table class="table table-bordered shadow">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FullName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Mobile)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreateDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.IsActive)
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @*@foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @item.FullName
-                        </td>
-                        <td>
-                            @item.Email
-                        </td>
-                        <td>
-                            @item.Mobile
-                        </td>
-                        <td>
-                            @item.CreateDate
-                        </td>
-                        <td>
-                            @item.IsActive
-                        </td>
-                    </tr>
-                }*@
-
-
-
-            </tbody>
-        </table>
+        <div class="col-md-6 h5">
+            FullName : @Model.FullName
+        </div>
+        <div class="col-md-6 h5">
+            Email : @Model.Email
+        </div>
+        <div class="col-md-6 h5">
+            Mobile : @Model.Mobile
+        </div>
+        <div class="col-md-6 h5">
+            Register Date : @Model.CreateDate
+        </div>
     </div>
 </div>
+
+

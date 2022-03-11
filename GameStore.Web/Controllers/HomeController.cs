@@ -42,7 +42,7 @@ namespace GameStore.Web.Controllers
             return View();
         }
 
-        [Route("Account")]
+        [Route("Account/{id}")]
         public IActionResult AccountDetails(int id)
         {
             return View(_accountService.GetUserByIdAsync(id));
