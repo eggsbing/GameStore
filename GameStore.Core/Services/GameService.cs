@@ -165,6 +165,7 @@ namespace GameStore.Core.Services
         {
             return _context.Games
                 .OrderByDescending(c => c.NumberOfPurchase)
+                .Take(3)
                 .ToGameIndexVm().ToListAsync();
         }
     }
