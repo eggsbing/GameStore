@@ -1,5 +1,6 @@
 using GameStore.Core.Interfaces;
 using GameStore.IoC;
+using GameStore.Web.Hubs;
 using GameStore.Web.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,8 @@ namespace GameStore.Web
         {
             services.AddIoCService(Configuration);
             services.AddControllersWithViews();
+            services.AddRazorPages();
+            services.AddSignalR();
 
             #region Authentication
             services.AddAuthentication(op =>
@@ -67,6 +70,7 @@ namespace GameStore.Web
                 app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseStaticFiles();
 
@@ -82,6 +86,8 @@ namespace GameStore.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
         }
     }

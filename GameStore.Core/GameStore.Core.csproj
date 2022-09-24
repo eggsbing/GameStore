@@ -19,4 +19,8 @@
     <ProjectReference Include="..\GameStore.Domain\GameStore.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Senders\SignalR\" />
+  </ItemGroup>
+
 </Project>
